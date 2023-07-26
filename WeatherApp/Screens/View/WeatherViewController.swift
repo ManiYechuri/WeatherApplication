@@ -113,7 +113,7 @@ extension WeatherViewController {
                         }
                         let weekday = Helper.shared.getWeekdayFromDate(Date(timeIntervalSince1970: data.dt))
                         let date = Helper.shared.convertStringToDate(dateString: data.dt_txt)
-                        self.weatherData.append(DisplayForecastData(weekday: weekday, image: imageString, degree: self.currentWeatherViewModel.convertKelvinToCelsius(temp: data.main.temp, from: .kelvin, to: .celsius), date: date))
+                        self.weatherData.append(DisplayForecastData(weekday: weekday, image: imageString, degree: Helper.shared.convertKelvinToCelsius(temp: data.main.temp, from: .kelvin, to: .celsius), date: date))
                     }
                     self.forecastTableView.reloadData()
                 }
@@ -140,10 +140,10 @@ extension WeatherViewController {
             }
             self.currentTemperatureView.backgroundColor = self.currentColor
             self.forecastDataView.backgroundColor = self.currentColor
-            self.labelCurrentDegrees.text = self.currentWeatherViewModel.convertKelvinToCelsius(temp: currentWeather.main.temp, from: .kelvin, to: .celsius)
-            self.labelDegrees.text = self.currentWeatherViewModel.convertKelvinToCelsius(temp: currentWeather.main.temp, from: .kelvin, to: .celsius)
-            self.labelMaximumDegrees.text = self.currentWeatherViewModel.convertKelvinToCelsius(temp: currentWeather.main.temp_max, from: .kelvin, to: .celsius)
-            self.labelMinimumDegrees.text = self.currentWeatherViewModel.convertKelvinToCelsius(temp: currentWeather.main.temp_min, from: .kelvin, to: .celsius)
+            self.labelCurrentDegrees.text = Helper.shared.convertKelvinToCelsius(temp: currentWeather.main.temp, from: .kelvin, to: .celsius)
+            self.labelDegrees.text = Helper.shared.convertKelvinToCelsius(temp: currentWeather.main.temp, from: .kelvin, to: .celsius)
+            self.labelMaximumDegrees.text = Helper.shared.convertKelvinToCelsius(temp: currentWeather.main.temp_max, from: .kelvin, to: .celsius)
+            self.labelMinimumDegrees.text = Helper.shared.convertKelvinToCelsius(temp: currentWeather.main.temp_min, from: .kelvin, to: .celsius)
         }
     }
 }

@@ -10,10 +10,10 @@ import UIKit
 typealias Handler = (Result<WeatherData,DataError>) -> Void
 typealias forecastWeatherHandler = (Result<ForecastWeatherData, DataError>) -> Void
 
-final class APIManager {
+class APIManager {
     
     static let shared = APIManager()
-    private init(){}
+    init(){}
     
     func getCurrentWeather(latitude : String,longitude : String,completion : @escaping Handler){
         guard let url = URL(string: Constant.API.currentWeatherAPI + "lat=\(latitude)&lon=\(longitude)&appid=\(Constant.APPID.appId)") else {

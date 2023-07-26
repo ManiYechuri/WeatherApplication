@@ -30,6 +30,10 @@ class DatabaseHelper {
     
     func saveCurrentWeather(currentWeather data : WeatherData){
         let entity = NSEntityDescription.entity(forEntityName: "CurrentWeatherData", in: context) ?? nil
+        if let exisitingData = fetchExistingData(entity: "CurrentWeatherData") {
+            self.deleteData(dataObjects: exisitingData)
+            saveContext()
+        }
         let weatherObject = CurrentWeatherData(entity: entity!, insertInto: context)
         weatherObject.id = Int64(data.id)
         weatherObject.base = data.base
@@ -59,15 +63,15 @@ class DatabaseHelper {
         weatherObject.coord?.lat = data.coord.lat
         weatherObject.coord?.lon = data.coord.lon
         
-        do {
-            try context.save()
-        }catch let error as NSError {
-            debugPrint("Unable to save weather details to coredata : \(error), \(error.userInfo), \(error.localizedDescription)")
-        }
+        self.saveContext()
     }
     
     func saveForecastWeatherData(forecase weather : ForecastWeatherData) {
         let entity = NSEntityDescription.entity(forEntityName: "ForecastData", in: context) ?? nil
+        if let exisitingData = fetchExistingData(entity: "ForecastData") {
+            self.deleteData(dataObjects: exisitingData)
+            saveContext()
+        }
         let weatherObject = ForecastData(entity: entity!, insertInto: context)
         weatherObject.cod = weather.cod
         weatherObject.cnt = Int64(weather.cnt)
@@ -89,12 +93,7 @@ class DatabaseHelper {
                 weatherObject.list?.weather?.descriptionn = item.description
             }
         }
-        do {
-            try self.context.save()
-        }catch {
-            debugPrint("Error in saving forecase details")
-        }
-        
+        self.saveContext()
     }
     
     func fetchCurrentWeatherData() -> WeatherData? {
@@ -102,6 +101,7 @@ class DatabaseHelper {
         let fetchRequest : NSFetchRequest<CurrentWeatherData> = CurrentWeatherData.fetchRequest()
         do {
             let result = try DatabaseHelper.shared.context.fetch(fetchRequest)
+            debugPrint("Fetched result : \(result)")
             for dataItem in result {
                 currentWeather?.base = dataItem.base ?? ""
                 currentWeather?.cod = Int(dataItem.cod)
@@ -154,5 +154,30 @@ class DatabaseHelper {
             print("Error while fetching forecast data")
         }
         return forecastWeatherData
+    }
+    
+    func fetchExistingData(entity name : String) -> [NSManagedObject]?{
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: name)
+        do {
+            let fetchedData = try context.fetch(fetchRequest)
+            return fetchedData
+        }catch let error as NSError{
+            debugPrint("Error fetching data : \(error), \(error.userInfo)")
+            return nil
+        }
+    }
+    
+    func deleteData(dataObjects : [NSManagedObject]){
+        for dataObject in dataObjects {
+            context.delete(dataObject)
+        }
+    }
+    
+    func saveContext(){
+        do {
+            try context.save()
+        }catch let error as NSError {
+            debugPrint("Error saving context : \(error), \(error.userInfo)")
+        }
     }
 }

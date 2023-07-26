@@ -50,6 +50,7 @@
 		1B93E15B2A7019D00070F73F /* LocationClouds+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93E1472A7019D00070F73F /* LocationClouds+CoreDataProperties.swift */; };
 		1BD35CDB2A70FF1900D883C4 /* ForecastedWeather+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD35CD92A70FF1900D883C4 /* ForecastedWeather+CoreDataClass.swift */; };
 		1BD35CDC2A70FF1900D883C4 /* ForecastedWeather+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD35CDA2A70FF1900D883C4 /* ForecastedWeather+CoreDataProperties.swift */; };
+		1BD35CDE2A71195500D883C4 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD35CDD2A71195500D883C4 /* APIServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		1B93E1472A7019D00070F73F /* LocationClouds+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationClouds+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1BD35CD92A70FF1900D883C4 /* ForecastedWeather+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForecastedWeather+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1BD35CDA2A70FF1900D883C4 /* ForecastedWeather+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForecastedWeather+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1BD35CDD2A71195500D883C4 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				1B7941F32A668325003BC0F3 /* WeatherAppTests.swift */,
+				1BD35CDD2A71195500D883C4 /* APIServiceTests.swift */,
 			);
 			path = WeatherAppTests;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BD35CDE2A71195500D883C4 /* APIServiceTests.swift in Sources */,
 				1B7941F42A668325003BC0F3 /* WeatherAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

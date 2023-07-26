@@ -18,20 +18,10 @@ final class ForecastWeatherViewModel {
             switch response {
             case .success(let weather):
                 self.forecastWeatherData = weather
-                //debugPrint("List : \(weather.list)")
                 self.eventHandler?(.dataLoaded)
             case .failure(let error):
                 self.eventHandler?(.error(error))
             }
         }
-    }
-    
-    func convertKelvinToCelsius(temp : Double, from inputTempType: UnitTemperature, to outputTempType : UnitTemperature) -> String {
-        let mf = MeasurementFormatter()
-        mf.numberFormatter.maximumFractionDigits = 0
-        mf.unitOptions = .providedUnit
-        let input = Measurement(value: temp, unit: inputTempType)
-        let output = input.converted(to: outputTempType)
-        return mf.string(from: output)
     }
 }
