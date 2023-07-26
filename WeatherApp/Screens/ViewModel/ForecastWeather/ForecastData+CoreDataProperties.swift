@@ -2,7 +2,7 @@
 //  ForecastData+CoreDataProperties.swift
 //  DVT_WeatherApp
 //
-//  Created by Mani Yechuri on 2023/07/25.
+//  Created by Mani Yechuri on 2023/07/26.
 //
 //
 
@@ -16,11 +16,10 @@ extension ForecastData {
         return NSFetchRequest<ForecastData>(entityName: "ForecastData")
     }
 
-    @NSManaged public var cnt: Int64
-    @NSManaged public var cod: String?
-    @NSManaged public var message: Int64
-    @NSManaged public var list: LocationList?
-    @NSManaged public var location: ForecastedWeather?
+    @NSManaged public var weekday: String?
+    @NSManaged public var image: String?
+    @NSManaged public var degree: String?
+    @NSManaged public var date: Date?
 
 }
 

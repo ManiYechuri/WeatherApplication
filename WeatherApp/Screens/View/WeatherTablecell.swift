@@ -13,6 +13,7 @@ class WeatherTablecell: UITableViewCell {
     @IBOutlet weak var climateImage: UIImageView!
     @IBOutlet weak var labelDegrees: UILabel!
     @IBOutlet weak var labelWeekDay: UILabel!
+    @IBOutlet weak var favoriteButton : UIButton!
     
     var weatherData : DisplayForecastData? {
         didSet {

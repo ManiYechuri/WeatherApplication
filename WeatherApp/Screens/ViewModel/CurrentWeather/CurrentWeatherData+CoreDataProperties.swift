@@ -2,7 +2,7 @@
 //  CurrentWeatherData+CoreDataProperties.swift
 //  DVT_WeatherApp
 //
-//  Created by Mani Yechuri on 2023/07/25.
+//  Created by Mani Yechuri on 2023/07/26.
 //
 //
 
@@ -23,12 +23,11 @@ extension CurrentWeatherData {
     @NSManaged public var name: String?
     @NSManaged public var timezone: Int64
     @NSManaged public var visibility: Int64
-    @NSManaged public var clouds: LocationClouds?
-    @NSManaged public var coord: LocationCoordinates?
-    @NSManaged public var main: LocationMain?
-    @NSManaged public var sys: LocationSystem?
-    @NSManaged public var weather: LocationWeather?
-    @NSManaged public var wind: LocationWind?
+    @NSManaged public var temperature: Double
+    @NSManaged public var feelsLike: Double
+    @NSManaged public var maxTemperature: Double
+    @NSManaged public var minTemperature: Double
+    @NSManaged public var mainWeather: String?
 
 }
 

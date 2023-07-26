@@ -9,14 +9,14 @@ import Foundation
 import CoreData
 
 struct WeatherData : Decodable {
-    var coord : Coordinates
-    var weather : [Weather]
+    var coord : Coordinates?
+    var weather : [Weather]?
     var base,name : String
-    var main : Main
-    var wind : Wind
-    var clouds : Clouds
+    var main : Main?
+    var wind : Wind?
+    var clouds : Clouds?
     var dt,timezone,id,cod,visibility : Int
-    var sys : System
+    var sys : System?
 }
 
 struct Coordinates : Decodable {

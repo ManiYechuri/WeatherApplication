@@ -32,6 +32,7 @@ struct City : Decodable {
     var country : String?
     var population, timezone, sunrise, sunset, id : Int
 }
+
 struct DisplayForecastData : Hashable {
     
     var weekday,image, degree : String

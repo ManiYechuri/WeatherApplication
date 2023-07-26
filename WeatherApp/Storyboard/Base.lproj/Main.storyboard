@@ -195,6 +195,36 @@
             </objects>
             <point key="canvasLocation" x="35.877862595419849" y="3.5211267605633805"/>
         </scene>
+        <!--Favorites View Controller-->
+        <scene sceneID="6Fv-ru-7fC">
+            <objects>
+                <viewController storyboardIdentifier="FavoritesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KYK-YL-ELk" customClass="FavoritesViewController" customModule="DVT_WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bdw-MF-sPt">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eBg-fr-awY">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ydJ-6o-map"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ydJ-6o-map" firstAttribute="bottom" secondItem="eBg-fr-awY" secondAttribute="bottom" id="EqX-cl-dw1"/>
+                            <constraint firstItem="ydJ-6o-map" firstAttribute="trailing" secondItem="eBg-fr-awY" secondAttribute="trailing" id="RGF-3x-TgX"/>
+                            <constraint firstItem="eBg-fr-awY" firstAttribute="leading" secondItem="ydJ-6o-map" secondAttribute="leading" id="jt0-Rb-2kp"/>
+                            <constraint firstItem="eBg-fr-awY" firstAttribute="top" secondItem="ydJ-6o-map" secondAttribute="top" id="xdd-gM-oEc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="eBg-fr-awY" id="hHX-Bi-fbv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GMw-lo-zXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="824" y="4"/>
+        </scene>
     </scenes>
     <resources>
         <image name="sea_sunny" width="180" height="160"/>

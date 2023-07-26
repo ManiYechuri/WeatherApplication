@@ -36,6 +36,12 @@ class Helper {
         let output = input.converted(to: outputTempType)
         return mf.string(from: output)
     }
+    
+    func getAppDelegate() -> AppDelegate {
+        DispatchQueue.main.sync {
+            return UIApplication.shared.delegate as! AppDelegate
+        }
+    }
 }
 
 extension UIColor {
