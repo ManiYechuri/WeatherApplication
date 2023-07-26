@@ -22,7 +22,6 @@ extension LocationList {
     @NSManaged public var visibility: Int64
     @NSManaged public var clouds: LocationClouds?
     @NSManaged public var main: LocationMain?
-    @NSManaged public var sys: LocationSystem?
     @NSManaged public var weather: LocationWeather?
     @NSManaged public var wind: LocationWind?
 

@@ -60,8 +60,7 @@ class DatabaseHelper {
         weatherObject.coord?.lon = data.coord.lon
         
         do {
-            try DatabaseHelper.shared.context.save()
-            debugPrint("Able to save weather details to coredata ")
+            try context.save()
         }catch let error as NSError {
             debugPrint("Unable to save weather details to coredata : \(error), \(error.userInfo), \(error.localizedDescription)")
         }
@@ -72,8 +71,24 @@ class DatabaseHelper {
         let weatherObject = ForecastData(entity: entity!, insertInto: context)
         weatherObject.cod = weather.cod
         weatherObject.cnt = Int64(weather.cnt)
-//        weatherObject.list = weather.list
-//        weatherObject.location = weather.city
+        for listItem in weather.list {
+            weatherObject.list?.clouds?.all = Int64(listItem.clouds.all)
+            weatherObject.list?.dateText = listItem.dt_txt
+            weatherObject.list?.dt = Int64(listItem.dt)
+            weatherObject.list?.main?.feels_like = listItem.main.feels_like
+            weatherObject.list?.main?.temp = listItem.main.temp
+            weatherObject.list?.main?.humidity = Int64(listItem.main.humidity)
+            weatherObject.list?.main?.pressure = Int64(listItem.main.pressure)
+            weatherObject.list?.main?.temp_max = listItem.main.temp_max
+            weatherObject.list?.main?.temp_min = listItem.main.temp_min
+            weatherObject.list?.pop = listItem.pop
+            weatherObject.list?.visibility = Int64(listItem.visibility)
+            for item in listItem.weather {
+                weatherObject.list?.weather?.icon = item.icon
+                weatherObject.list?.weather?.mainString = item.main
+                weatherObject.list?.weather?.descriptionn = item.description
+            }
+        }
         do {
             try self.context.save()
         }catch {
@@ -125,10 +140,15 @@ class DatabaseHelper {
         do {
             let result = try context.fetch(fetchRequest)
             for dataItem in result {
-//                forecastWeatherData?.cnt = Int(dataItem.cnt)
-//                forecastWeatherData?.cod = dataItem.cod ?? ""
-//                forecastWeatherData?.city = dataItem.location
-//                forecastWeatherData?.list = dataItem.list
+                forecastWeatherData?.cnt = Int(dataItem.cnt)
+                forecastWeatherData?.cod = dataItem.cod ?? ""
+                forecastWeatherData?.message = Int(dataItem.message)
+                let dt = Int(dataItem.list?.dt ?? 0)
+                let wind = Wind(speed: dataItem.list?.wind?.speed ?? 0.0, deg: Int(dataItem.list?.wind?.deg ?? 0))
+                let clouds = Clouds(all: Int(dataItem.list?.clouds?.all ?? 0))
+                let main = Main(temp: dataItem.list?.main?.temp ?? 0.0, feels_like: dataItem.list?.main?.feels_like ?? 0.0, temp_min: dataItem.list?.main?.temp_min ?? 0.0, temp_max: dataItem.list?.main?.temp_max ?? 0.0, pressure: Int(dataItem.list?.main?.pressure ?? 0), humidity: Int(dataItem.list?.main?.humidity ?? 0))
+                let weather = Weather(id: 0, main: dataItem.list?.weather?.mainString ?? "", description: dataItem.list?.weather?.descriptionn ?? "", icon: dataItem.list?.weather?.icon ?? "")
+                forecastWeatherData?.list.append(List(dt: TimeInterval(dt), weather: [weather], main: main, clouds: clouds, wind: wind, dt_txt: dataItem.list?.dateText ?? "", visibility: Int(dataItem.list?.visibility ?? 0), pop: 0.0))
             }
         }catch {
             print("Error while fetching forecast data")

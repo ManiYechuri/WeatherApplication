@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+DVT_WeatherApp in DVT_WeatherApp, no dependencies
+DVT_WeatherAppTests in DVT_WeatherApp, depends on:
+DVT_WeatherApp in DVT_WeatherApp (explicit)
+DVT_WeatherAppUITests in DVT_WeatherApp, depends on:
+DVT_WeatherApp in DVT_WeatherApp (explicit)

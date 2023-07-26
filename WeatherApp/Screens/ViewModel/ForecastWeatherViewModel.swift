@@ -18,6 +18,7 @@ final class ForecastWeatherViewModel {
             switch response {
             case .success(let weather):
                 self.forecastWeatherData = weather
+                //debugPrint("List : \(weather.list)")
                 self.eventHandler?(.dataLoaded)
             case .failure(let error):
                 self.eventHandler?(.error(error))

@@ -20,9 +20,9 @@
         <attribute name="cod" optional="YES" attributeType="String"/>
         <attribute name="message" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationList"/>
-        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ForecastWeather"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ForecastedWeather"/>
     </entity>
-    <entity name="ForecastWeather" representedClassName="ForecastWeather" syncable="YES" codeGenerationType="class">
+    <entity name="ForecastedWeather" representedClassName="ForecastedWeather" syncable="YES">
         <attribute name="cityID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -39,7 +39,7 @@
         <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="lon" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="LocationList" representedClassName="LocationList" syncable="YES" codeGenerationType="class">
+    <entity name="LocationList" representedClassName="LocationList" syncable="YES">
         <attribute name="dateText" optional="YES" attributeType="String"/>
         <attribute name="dt" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="pop" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>

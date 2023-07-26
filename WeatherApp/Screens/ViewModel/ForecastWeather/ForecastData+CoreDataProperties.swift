@@ -20,7 +20,7 @@ extension ForecastData {
     @NSManaged public var cod: String?
     @NSManaged public var message: Int64
     @NSManaged public var list: LocationList?
-    @NSManaged public var location: ForecastWeather?
+    @NSManaged public var location: ForecastedWeather?
 
 }
 

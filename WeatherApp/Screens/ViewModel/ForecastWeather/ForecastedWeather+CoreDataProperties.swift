@@ -1,8 +1,8 @@
 //
-//  ForecastWeather+CoreDataProperties.swift
+//  ForecastedWeather+CoreDataProperties.swift
 //  DVT_WeatherApp
 //
-//  Created by Mani Yechuri on 2023/07/25.
+//  Created by Mani Yechuri on 2023/07/26.
 //
 //
 
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension ForecastWeather {
+extension ForecastedWeather {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<ForecastWeather> {
-        return NSFetchRequest<ForecastWeather>(entityName: "ForecastWeather")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ForecastedWeather> {
+        return NSFetchRequest<ForecastedWeather>(entityName: "ForecastedWeather")
     }
 
     @NSManaged public var cityID: Int64
@@ -27,6 +27,6 @@ extension ForecastWeather {
 
 }
 
-extension ForecastWeather : Identifiable {
+extension ForecastedWeather : Identifiable {
 
 }

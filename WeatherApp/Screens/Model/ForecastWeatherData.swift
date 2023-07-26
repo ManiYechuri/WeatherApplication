@@ -21,7 +21,6 @@ struct List : Decodable {
     var main : Main
     var clouds : Clouds
     var wind : Wind
-    var sys : Sys
     var dt_txt : String
     var visibility : Int
     var pop : Float
@@ -33,11 +32,6 @@ struct City : Decodable {
     var country : String?
     var population, timezone, sunrise, sunset, id : Int
 }
-
-struct Sys : Decodable {
-    var pod : String
-}
-
 struct DisplayForecastData : Hashable {
     
     var weekday,image, degree : String

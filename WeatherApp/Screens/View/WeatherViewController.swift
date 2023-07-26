@@ -28,7 +28,6 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         configuration()
-        //DatabaseHelper.shared.fetchCurrentWeatherData()
     }
 }
 
@@ -116,15 +115,6 @@ extension WeatherViewController {
                         let date = Helper.shared.convertStringToDate(dateString: data.dt_txt)
                         self.weatherData.append(DisplayForecastData(weekday: weekday, image: imageString, degree: self.currentWeatherViewModel.convertKelvinToCelsius(temp: data.main.temp, from: .kelvin, to: .celsius), date: date))
                     }
-                    let groupDic = Dictionary(grouping: self.weatherData) { (pendingCamera) -> DateComponents in
-
-                        let date = Calendar.current.dateComponents([.weekday], from: (pendingCamera.date))
-
-                        return date
-                    }
-
-                    let finalDate = self.weatherData.sliced(by: [.weekday], for: \.date)
-                    debugPrint("Group dic :  \(finalDate.count)")
                     self.forecastTableView.reloadData()
                 }
             case .error(let error):
@@ -157,36 +147,3 @@ extension WeatherViewController {
         }
     }
 }
-
-extension Array {
-  func sliced(by dateComponents: Set<Calendar.Component>, for key: KeyPath<Element, Date>) -> [Date: [Element]] {
-    let initial: [Date: [Element]] = [:]
-    let groupedByDateComponents = reduce(into: initial) { acc, cur in
-      let components = Calendar.current.dateComponents(dateComponents, from: cur[keyPath: key])
-      let date = Calendar.current.date(from: components)!
-      let existing = acc[date] ?? []
-      acc[date] = existing + [cur]
-    }
-
-    return groupedByDateComponents
-  }
-}
-
-extension Sequence where Element: Hashable {
-    func uniqued() -> [Element] {
-        var set = Set<Element>()
-        return filter { set.insert($0).inserted }
-    }
-}
-
-func removeDuplicates<T: Equatable>(from array: inout [T]) {
-    var uniqueArray = [T]()
-    for element in array {
-        if !uniqueArray.contains(element) {
-            uniqueArray.append(element)
-        }
-    }
-    array = uniqueArray
-}
-
-
