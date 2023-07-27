@@ -16,7 +16,7 @@ final class CurrentWeatherViewModel {
     
     
     func fetchCurrentWeather(latitude: String, longitude: String){
-        APIManager.shared.getCurrentWeather(latitude: latitude, longitude: longitude) { response in
+        APIManager.shared.getCurrentWeather(urlString: Constant.API.currentWeatherAPI, latitude: latitude, longitude: longitude, type: WeatherData.self) { response in
             self.eventHandler?(.loading)
             switch response {
             case .success(let weather):

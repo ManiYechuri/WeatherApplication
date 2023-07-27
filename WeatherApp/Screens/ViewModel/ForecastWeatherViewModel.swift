@@ -13,7 +13,7 @@ final class ForecastWeatherViewModel {
     var eventHandler : ((_ event : Event) -> Void)?
     
     func fetchForecastWeatherData(latitude: String, longitude: String){
-        APIManager.shared.getForecastWeather(latitude: latitude, longitude: longitude) { response in
+        APIManager.shared.getCurrentWeather(urlString: Constant.API.forecastWeatherAPI, latitude: latitude, longitude: longitude, type: ForecastWeatherData.self) { response in
             self.eventHandler?(.loading)
             switch response {
             case .success(let weather):
